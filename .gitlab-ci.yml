@@ -1,0 +1,21 @@
+stages:
+  - build
+  - push
+variables:
+  GIT_SSL_NO_VERIFY: "true"
+  REF_NAME: $CI_REGISTRY/$CI_PROJECT_PATH:$CI_PIPELINE_IID
+  RELEASE_NAME: $CI_REGISTRY/$CI_PROJECT_PATH:latest
+build:
+  stage: build
+  script: |
+    env
+    echo $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin https://$CI_REGISTRY
+    docker build -t $REF_NAME .
+    docker push $REF_NAME
+push:
+  stage: push
+  script: |
+    echo $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin https://$CI_REGISTRY
+    docker pull $REF_NAME
+    docker tag $REF_NAME $RELEASE_NAME
+    docker push $RELEASE_NAME
