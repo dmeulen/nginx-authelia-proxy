@@ -35,7 +35,7 @@ http {
             proxy_set_header Remote-Groups $groups;
             proxy_set_header Remote-Name $name;
             proxy_set_header Remote-Email $email;
-            error_page 401 =302 https://auth.example.com/?rd=$target_url;
+            error_page 401 =302 https://{{ getenv "AUTHELIA_URL" }}/?rd=$target_url;
 
             client_body_buffer_size 128k;
             proxy_next_upstream error timeout invalid_header http_500 http_502 http_503;
