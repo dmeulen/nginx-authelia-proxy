@@ -11,6 +11,11 @@ http {
     error_log /dev/stderr debug;
     access_log /dev/stdout;
 
+    map $http_upgrade $connection_upgrade {
+      default upgrade;
+      '' close;
+    }
+
     server {
         listen {{ getenv "NOMAD_PORT_https" }} ssl;
         server_name {{ getenv "SERVER_NAME" }};
@@ -22,11 +27,6 @@ http {
         set_by_lua_block $ns_ip { return os.getenv("NS_IP") or "127.0.0.1" }
         set_by_lua_block $ns_port { return os.getenv("NS_PORT") or 53 }
         access_by_lua_file /etc/nginx/service_router.lua;
-
-        map $http_upgrade $connection_upgrade {
-          default upgrade;
-          '' close;
-        }
 
         location / {
             auth_request /authelia;
