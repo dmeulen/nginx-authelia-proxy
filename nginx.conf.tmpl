@@ -24,7 +24,7 @@ http {
         access_by_lua_file /etc/nginx/service_router.lua;
 
         location / {
-            auth_request /auth;
+            auth_request /authelia;
             proxy_pass http://$target;
             auth_request_set $target_url $scheme://$http_host$request_uri;
             auth_request_set $user $upstream_http_remote_user;
@@ -66,7 +66,7 @@ http {
             real_ip_recursive on;
         }
 
-        location = /auth {
+        location = /authelia {
             internal;
             proxy_pass_request_body off;
             proxy_pass {{ getenv "AUTHELIA_URL" }};
