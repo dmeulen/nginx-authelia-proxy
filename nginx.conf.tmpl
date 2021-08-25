@@ -69,7 +69,7 @@ http {
         location = /auth {
             internal;
             proxy_pass_request_body off;
-            proxy_pass {{ getenv "AUTHELIA_URL" }}
+            proxy_pass {{ getenv "AUTHELIA_URL" }};
             proxy_set_header Content-Length "";
             proxy_next_upstream error timeout invalid_header http_500 http_502 http_503;
 
