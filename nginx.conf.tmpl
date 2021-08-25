@@ -51,8 +51,8 @@ http {
             proxy_set_header X-Forwarded-Host $http_host;
             proxy_set_header X-Forwarded-Uri $request_uri;
             proxy_set_header X-Forwarded-Ssl on;
-            proxy_set_header Upgrade $http_upgrade
-            proxy_set_header Connection $connection_upgrade
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection $connection_upgrade;
 
             proxy_redirect  http://  $scheme://;
             proxy_http_version 1.1;
