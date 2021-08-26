@@ -1,6 +1,6 @@
 # Nginx authelia reverse proxy
 
-This is a reverse proxy based on nginx. It uses [aythelia](https://www.authelia.com/docs/) as authentication and authorization server. Authelia supports SSO and 2FA, uses LDAP as authentication backend. Most of all authelia is very easy to set up!
+This is a reverse proxy based on nginx. It uses [authelia](https://www.authelia.com/docs/) as authentication and authorization server. Authelia supports SSO and 2FA, uses LDAP as authentication backend. Most of all authelia is very easy to set up!
 
 This reverse proxy uses a LUA script to lookup services and ports in consul ( thank you [ygersie](https://github.com/ygersie/nginx-ldap-auth) and [vlipco](https://github.com/vlipco/srv-router)).
 
