@@ -9,7 +9,7 @@ This reverse proxy uses a LUA script to lookup services and ports in consul ( th
 Configuration is entirely done with environment variables.
 
 Env var | Description | Example value | Default value
---- | --- | ---
-`SERVER_NAME` | Sets the server_name value nginx will listen to. REQUIRED | `service.example.com` | None
-`BACKEND_SERVICE` | The consul service name to be used as upstream. REQUIRED | `http.consul.service.conul` | None
-`AUTHELIA_URL` | The authelia backend url. REQUIRED | `https://authelia.example.com` | None
+--- | --- | --- | ---
+`SERVER_NAME` | Sets the server_name value nginx will listen to. REQUIRED | `service.example.com` | `None`
+`BACKEND_SERVICE` | The consul service name to be used as upstream. REQUIRED | `http.consul.service.conul` | `None`
+`AUTHELIA_URL` | The authelia backend url. REQUIRED | `https://authelia.example.com` | `None`
