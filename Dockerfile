@@ -1,6 +1,4 @@
-FROM nexus.ops.anna.lan/alpine:3.14
-
-USER root
+FROM alpine:3.14
 
 RUN \
   apk --no-cache add ca-certificates nginx nginx-mod-http-lua lua-resty-dns lua5.1-resty-dns gomplate
