@@ -10,6 +10,7 @@ env NS_PORT;
 http {
     error_log /dev/stderr debug;
     access_log /dev/stdout;
+    server_tokens off;
 
     map $http_upgrade $connection_upgrade {
       default upgrade;
