@@ -14,6 +14,12 @@ function log_info(msg)
   ngx.log(ngx.INFO, msg, "\n")
 end
 
+if string.find(ngx.var.service, ":") then
+  ngx.var.target = ngx.var.service
+  log_info("Colon found, assuming host:port for" .. ngx.var.service)
+  return abort("Colon found, assuming host:port", 200)
+end
+
 local nameserver = {ngx.var.ns_ip, ngx.var.ns_port}
 
 local dns, err = resolver:new{
