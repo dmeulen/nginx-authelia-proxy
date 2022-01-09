@@ -38,7 +38,7 @@ http {
 
         location / {
             auth_request /authelia;
-            proxy_pass http://$target;
+            proxy_pass {{ gentenv "BACKEND_SERVICE_SCHEME" }}://$target;
             auth_request_set $target_url $scheme://$http_host$request_uri;
             auth_request_set $user $upstream_http_remote_user;
             auth_request_set $groups $upstream_http_remote_groups;
