@@ -1,6 +1,6 @@
 #!/bin/sh
 
-BACKEND_SERVICE_SCHEME="${BACKEND_SERVICE_SCHEME:=http}"
+export BACKEND_SERVICE_SCHEME="${BACKEND_SERVICE_SCHEME:=http}"
 
 cat /etc/nginx/nginx.conf.tmpl | gomplate > /etc/nginx/nginx.conf
 
